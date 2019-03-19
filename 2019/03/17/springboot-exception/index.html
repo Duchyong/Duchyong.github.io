@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>SpringBoot处理异常的方式 | 淡眉如秋水,玉肌伴轻风</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SpringBoot处理Exception的方式处理异常方式：  修改默认error.html 在抛出异常的java文件中，定义处理异常的方法 定义全局的处理异常的方法 配置SimpleMappingExceptionResolver 自定义HandlerExceptionResolver类">
+<meta name="keywords" content="springboot,exception">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot处理异常的方式">
+<meta property="og:url" content="http://yoursite.com/2019/03/17/springboot-exception/index.html">
+<meta property="og:site_name" content="淡眉如秋水,玉肌伴轻风">
+<meta property="og:description" content="SpringBoot处理Exception的方式处理异常方式：  修改默认error.html 在抛出异常的java文件中，定义处理异常的方法 定义全局的处理异常的方法 配置SimpleMappingExceptionResolver 自定义HandlerExceptionResolver类">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-19T14:30:37.530Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot处理异常的方式">
+<meta name="twitter:description" content="SpringBoot处理Exception的方式处理异常方式：  修改默认error.html 在抛出异常的java文件中，定义处理异常的方法 定义全局的处理异常的方法 配置SimpleMappingExceptionResolver 自定义HandlerExceptionResolver类">
+  
+    <link rel="alternate" href="/atom.xml" title="淡眉如秋水,玉肌伴轻风" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">淡眉如秋水,玉肌伴轻风</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-springboot-exception" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/17/springboot-exception/" class="article-date">
+  <time datetime="2019-03-17T07:00:48.000Z" itemprop="datePublished">2019-03-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>►<a class="article-category-link" href="/categories/spring/springboot/">springboot</a>►<a class="article-category-link" href="/categories/spring/springboot/exception/">exception</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SpringBoot处理异常的方式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="SpringBoot处理Exception的方式"><a href="#SpringBoot处理Exception的方式" class="headerlink" title="SpringBoot处理Exception的方式"></a>SpringBoot处理Exception的方式</h3><p>处理异常方式：</p>
+<ul>
+<li>修改默认error.html</li>
+<li>在抛出异常的java文件中，定义处理异常的方法</li>
+<li>定义全局的处理异常的方法</li>
+<li>配置SimpleMappingExceptionResolver</li>
+<li>自定义HandlerExceptionResolver类</li>
+</ul>
+<a id="more"></a>
+<h4 id="1-添加error-html文件"><a href="#1-添加error-html文件" class="headerlink" title="1. 添加error.html文件"></a>1. 添加error.html文件</h4><p>用于替换默认的错误提示页面</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 默认的异常，会传到exception对象中 --&gt;</span><br><span class="line">&lt;span th:text="$&#123;exception&#125;"&gt;&lt;/span&gt;&lt;br/&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="2-定义异常处理方法"><a href="#2-定义异常处理方法" class="headerlink" title="2. 定义异常处理方法"></a>2. 定义异常处理方法</h4><p>在可能抛出异常的文件，定义异常处理方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 算数异常</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ExceptionHandler</span>(java.lang.ArithmeticException.class)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">handleArithmeticException</span><span class="params">(Model model, Exception e)</span> </span>&#123;</span><br><span class="line">	model.addAttribute(<span class="string">"errorMessage"</span>, e.toString());</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"error"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是这种方法，会造成代码冗余</p>
+<h4 id="3-ControllerAdvice-ExceptionHandler"><a href="#3-ControllerAdvice-ExceptionHandler" class="headerlink" title="3. @ControllerAdvice+@ExceptionHandler"></a>3. @ControllerAdvice+@ExceptionHandler</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 全局的异常处理类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalException</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(value=&#123;NullPointerException.class&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">nullPointerException</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">"message"</span>, <span class="string">"空指针异常"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"error"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-配置SimpleMappingExceptionResolver"><a href="#4-配置SimpleMappingExceptionResolver" class="headerlink" title="4. 配置SimpleMappingExceptionResolver"></a>4. 配置SimpleMappingExceptionResolver</h4><p>在全局异常类中添加一个方法完成异常的统一处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 全局异常处理Resolver</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 15081</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalException</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 只能看到映射视图，不能传递参数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> SimpleMappingExceptionResolver <span class="title">getSimpleMappingExceptionResolver</span><span class="params">()</span></span>&#123;</span><br><span class="line">		SimpleMappingExceptionResolver resolver = <span class="keyword">new</span> SimpleMappingExceptionResolver();</span><br><span class="line">		Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">		properties.put(<span class="string">"java.lang.NullPointerException"</span>, <span class="string">"error1"</span>);</span><br><span class="line">		properties.put(<span class="string">"java.lang.ArithmeticException"</span>, <span class="string">"error1"</span>);</span><br><span class="line">		resolver.setExceptionMappings(properties);</span><br><span class="line">		<span class="keyword">return</span> resolver;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-自定义HandlerExceptionResolver"><a href="#5-自定义HandlerExceptionResolver" class="headerlink" title="5. 自定义HandlerExceptionResolver"></a>5. 自定义HandlerExceptionResolver</h4><p>需 要 再 全 局 异 常 处 理 类 中 实 现HandlerExceptionResolver 接口 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过实现HandlerExceptionResolver，</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 15081</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalException</span> <span class="keyword">implements</span> <span class="title">HandlerExceptionResolver</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ModelAndView <span class="title">resolveException</span><span class="params">(HttpServletRequest req, HttpServletResponse res, Object h,</span></span></span><br><span class="line"><span class="function"><span class="params">			Exception ex)</span> </span>&#123;</span><br><span class="line">		ModelAndView mv = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">		<span class="keyword">if</span>(ex <span class="keyword">instanceof</span> ArithmeticException) &#123;</span><br><span class="line">			mv.setViewName(<span class="string">"error1"</span>);</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">if</span>(ex <span class="keyword">instanceof</span> NullPointerException) &#123;</span><br><span class="line">			mv.setViewName(<span class="string">"error2"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		mv.addObject(<span class="string">"error"</span>, ex.toString());</span><br><span class="line">		<span class="keyword">return</span> mv;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/17/springboot-exception/" data-id="cjtfvda2d00007svstsltk9p2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/exception/">exception</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/17/springboot-test/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          spring-test
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/17/springboot-hibernate/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SpringBoot + hibernate 验证数据正确性</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/">springboot</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/cache/">cache</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/cache/ehcache/">ehcache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/cache/redis/">redis</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/data/">data</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/data/jpa/">jpa</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/exception/">exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/hibernate/">hibernate</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/loader/">loader</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/mybatis/">mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/scheduler/">scheduler</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/test/">test</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/web/">web</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/List/">List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cache/">cache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ehcache/">ehcache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hibernate/">hibernate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jpa/">jpa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/loader/">loader</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pool/">pool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scheduler/">scheduler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/ehcache/" style="font-size: 10px;">ehcache</a> <a href="/tags/exception/" style="font-size: 10px;">exception</a> <a href="/tags/freemarker/" style="font-size: 10px;">freemarker</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jpa/" style="font-size: 10px;">jpa</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pool/" style="font-size: 10px;">pool</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/scheduler/" style="font-size: 10px;">scheduler</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/springboot/" style="font-size: 20px;">springboot</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/thymeleaf/" style="font-size: 10px;">thymeleaf</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/19/os/">Operation System</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/mysql/">MySQL 数据类型</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/springboot-web/">springboot支持的web开发</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/springboot-starter/">SpringBoot 起始章</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/springboot-scheduler/">spring整合定时任务框架</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 bswy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

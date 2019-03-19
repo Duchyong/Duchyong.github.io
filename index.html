@@ -5,17 +5,17 @@
   
 
   
-  <title>Hexo</title>
+  <title>淡眉如秋水,玉肌伴轻风</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="淡眉如秋水,玉肌伴轻风">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="淡眉如秋水,玉肌伴轻风">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="淡眉如秋水,玉肌伴轻风">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="淡眉如秋水,玉肌伴轻风" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -34,7 +34,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">淡眉如秋水,玉肌伴轻风</a>
       </h1>
       
     </div>
@@ -62,159 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-springboot-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/14/springboot-1/" class="article-date">
-  <time datetime="2019-03-14T15:20:17.000Z" itemprop="datePublished">2019-03-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/14/springboot-1/">springboot 基础知识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="SpringBoot启动类"><a href="#SpringBoot启动类" class="headerlink" title="SpringBoot启动类"></a>SpringBoot启动类</h3><p>注解<code>@SpringBootApplication</code>  是在启动类上添加的。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(Application.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2019/03/14/springboot-1/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/14/springboot-1/" data-id="cjt8sbpkg0008wcvsf462xne8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-fixDisplay" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/13/fixDisplay/" class="article-date">
-  <time datetime="2019-03-13T15:13:26.000Z" itemprop="datePublished">2019-03-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/13/fixDisplay/">fixDisplay</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>修改Hexo在主页显示时，文章内容全部显示。  </p>
-<p>解决办法：  </p>
-<ol>
-<li><p>在文章中添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol start="2">
-<li><p>自定义修改代码：</p>
-<p><a href="https://twiceyuan.com/2014/05/25/hexo%E8%87%AA%E5%8A%A8%E6%B7%BB%E5%8A%A0readmore%E6%A0%87%E8%AE%B0/" target="_blank" rel="noopener">文章链接</a></p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/13/fixDisplay/" data-id="cjt8sbpjz0000wcvssoqdibbo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-myFirstBlog" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/13/myFirstBlog/" class="article-date">
-  <time datetime="2019-03-13T14:17:00.000Z" itemprop="datePublished">2019-03-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/13/myFirstBlog/">myFirstBlog</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Java的集合框架"><a href="#Java的集合框架" class="headerlink" title="Java的集合框架"></a>Java的集合框架</h3><h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h4><ul>
-<li>常用来存储对象</li>
-<li>初始容量为16</li>
-<li>读取简单</li>
-</ul>
-<h4 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h4><ul>
-<li>链表实现</li>
-<li>没有容量限制</li>
-<li>插入删除简单</li>
-</ul>
-<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><ul>
-<li>bucket的概念</li>
-<li>key-value模式</li>
-</ul>
-<h4 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h4><ul>
-<li>内部不存在相同的对象</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/13/myFirstBlog/" data-id="cjt8sbpkc0004wcvsmfj8jk7u" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java-List-集合/">java, List, 集合</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-os" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/03/13/os/" class="article-date">
-  <time datetime="2019-03-13T14:15:32.690Z" itemprop="datePublished">2019-03-13</time>
+    <a href="/2019/03/19/os/" class="article-date">
+  <time datetime="2019-03-19T14:22:24.372Z" itemprop="datePublished">2019-03-19</time>
 </a>
     
   </div>
@@ -225,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/13/os/">Operation System</a>
+      <a class="article-title" href="/2019/03/19/os/">Operation System</a>
     </h1>
   
 
@@ -250,13 +101,13 @@
 </ul>
         
           <p class="article-more-link">
-            <a href="/2019/03/13/os/#more">Read More</a>
+            <a href="/2019/03/19/os/#more">Read More</a>
           </p>
         
       
     </li></ul></div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/13/os/" data-id="cjt8sbpk50001wcvs4ld7ni1n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/19/os/" data-id="cjtfvaewq00048svse6c3jbx1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,8 +119,8 @@
   
     <article id="post-mysql" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/03/13/mysql/" class="article-date">
-  <time datetime="2019-03-13T14:13:10.507Z" itemprop="datePublished">2019-03-13</time>
+    <a href="/2019/03/19/mysql/" class="article-date">
+  <time datetime="2019-03-19T14:22:24.371Z" itemprop="datePublished">2019-03-19</time>
 </a>
     
   </div>
@@ -280,7 +131,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/13/mysql/">MySQL 数据类型</a>
+      <a class="article-title" href="/2019/03/19/mysql/">MySQL 数据类型</a>
     </h1>
   
 
@@ -293,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/13/mysql/" data-id="cjt8sbpke0005wcvskdvcasiu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/19/mysql/" data-id="cjtfvaewi00008svsaodahf3b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -303,10 +154,62 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-springboot-web" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/03/13/hello-world/" class="article-date">
-  <time datetime="2019-03-13T14:09:35.937Z" itemprop="datePublished">2019-03-13</time>
+    <a href="/2019/03/19/springboot-web/" class="article-date">
+  <time datetime="2019-03-19T08:09:00.000Z" itemprop="datePublished">2019-03-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>►<a class="article-category-link" href="/categories/spring/springboot/">springboot</a>►<a class="article-category-link" href="/categories/spring/springboot/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/19/springboot-web/">springboot支持的web开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Web开发"><a href="#Web开发" class="headerlink" title="Web开发"></a>Web开发</h2><p>Web开发的框架有:</p>
+<ul>
+<li>jsp</li>
+<li>thymeleaf</li>
+<li>freemarker</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2019/03/19/springboot-web/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/19/springboot-web/" data-id="cjtfvhjus000094vsleaighmq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsp/">jsp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-springboot-starter" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/19/springboot-starter/" class="article-date">
+  <time datetime="2019-03-19T07:24:07.000Z" itemprop="datePublished">2019-03-19</time>
 </a>
     
   </div>
@@ -317,7 +220,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/13/hello-world/">Hello World</a>
+      <a class="article-title" href="/2019/03/19/springboot-starter/">SpringBoot 起始章</a>
     </h1>
   
 
@@ -325,22 +228,87 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h3 id="Spring-Boot特点"><a href="#Spring-Boot特点" class="headerlink" title="Spring Boot特点"></a>Spring Boot特点</h3><ul>
+<li><p>Spring Boot 设计目的是用来简化新Spring应用的初始搭建以及开发过程。</p>
+</li>
+<li><p>嵌入的Tomcat，无需部署War文件</p>
+</li>
+<li><p>Spring Boot不是对Spring功能的增强，而是提供了一种快速使用Spring的方式。</p>
+</li>
+</ul>
+<h3 id="Spring-Boot启动器"><a href="#Spring-Boot启动器" class="headerlink" title="Spring Boot启动器"></a>Spring Boot启动器</h3><p>Spring Boot启动器其实就是一些jar包集合。Spring Boot一共提供了44种启动器</p>
+<ol>
+<li><p>spring-boot-starter-web</p>
+<p>支持全栈式web开发，包括了tomcat和springmvc等jar</p>
+</li>
+<li><p>spring-boot-starter-jdbc</p>
+<p>支持spring以jdbc方式操作数据库的jar集合</p>
+</li>
+<li><p>spring-boot-starter-redis</p>
+<p>支持redis键值存储的数据库操作。</p>
+</li>
+</ol>
+<p>启动Spring Boot的启动类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * SpringBoot 启动类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> chen</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(Application.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/13/hello-world/" data-id="cjt8sbpka0003wcvsf06c0ma1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/19/springboot-starter/" data-id="cjtfvdvb10000p0vs2qw4o3gq" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-springboot-scheduler" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/19/springboot-scheduler/" class="article-date">
+  <time datetime="2019-03-19T02:46:13.000Z" itemprop="datePublished">2019-03-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>►<a class="article-category-link" href="/categories/spring/springboot/">springboot</a>►<a class="article-category-link" href="/categories/spring/springboot/scheduler/">scheduler</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/19/springboot-scheduler/">spring整合定时任务框架</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Spring的定时器"><a href="#Spring的定时器" class="headerlink" title="Spring的定时器"></a>Spring的定时器</h3><ul>
+<li>自带的定时器，从3.0开始</li>
+<li>整合Quartz框架</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2019/03/19/springboot-scheduler/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/19/springboot-scheduler/" data-id="cjtfvda2w000e7svsnrdfyvqi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scheduler/">scheduler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li></ul>
+
     </footer>
   </div>
   
@@ -350,18 +318,30 @@
   
 
 
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
 </section>
         
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/">springboot</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/cache/">cache</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/cache/ehcache/">ehcache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/cache/redis/">redis</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/data/">data</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/data/jpa/">jpa</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/exception/">exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/hibernate/">hibernate</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/loader/">loader</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/mybatis/">mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/scheduler/">scheduler</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/test/">test</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/web/">web</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-List-集合/">java, List, 集合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/List/">List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cache/">cache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ehcache/">ehcache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hibernate/">hibernate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jpa/">jpa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/loader/">loader</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pool/">pool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scheduler/">scheduler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li></ul>
     </div>
   </div>
 
@@ -371,7 +351,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java-List-集合/" style="font-size: 10px;">java, List, 集合</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a>
+      <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/ehcache/" style="font-size: 10px;">ehcache</a> <a href="/tags/exception/" style="font-size: 10px;">exception</a> <a href="/tags/freemarker/" style="font-size: 10px;">freemarker</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jpa/" style="font-size: 10px;">jpa</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pool/" style="font-size: 10px;">pool</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/scheduler/" style="font-size: 10px;">scheduler</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/springboot/" style="font-size: 20px;">springboot</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/thymeleaf/" style="font-size: 10px;">thymeleaf</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
     </div>
   </div>
 
@@ -393,23 +373,23 @@
       <ul>
         
           <li>
-            <a href="/2019/03/14/springboot-1/">springboot 基础知识</a>
+            <a href="/2019/03/19/os/">Operation System</a>
           </li>
         
           <li>
-            <a href="/2019/03/13/fixDisplay/">fixDisplay</a>
+            <a href="/2019/03/19/mysql/">MySQL 数据类型</a>
           </li>
         
           <li>
-            <a href="/2019/03/13/myFirstBlog/">myFirstBlog</a>
+            <a href="/2019/03/19/springboot-web/">springboot支持的web开发</a>
           </li>
         
           <li>
-            <a href="/2019/03/13/os/">Operation System</a>
+            <a href="/2019/03/19/springboot-starter/">SpringBoot 起始章</a>
           </li>
         
           <li>
-            <a href="/2019/03/13/mysql/">MySQL 数据类型</a>
+            <a href="/2019/03/19/springboot-scheduler/">spring整合定时任务框架</a>
           </li>
         
       </ul>
@@ -424,7 +404,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
+      &copy; 2019 bswy<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

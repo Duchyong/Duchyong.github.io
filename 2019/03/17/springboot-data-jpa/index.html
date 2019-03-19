@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>SpringBoot整合JPA | 淡眉如秋水,玉肌伴轻风</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JPA的使用，减少SQL语言的应用，以对象关系映射操作持久化数据库。减少对SQL的操作 基于JPA标准减少持久层代码，关注业务层开发">
+<meta name="keywords" content="springboot,jpa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot整合JPA">
+<meta property="og:url" content="http://yoursite.com/2019/03/17/springboot-data-jpa/index.html">
+<meta property="og:site_name" content="淡眉如秋水,玉肌伴轻风">
+<meta property="og:description" content="JPA的使用，减少SQL语言的应用，以对象关系映射操作持久化数据库。减少对SQL的操作 基于JPA标准减少持久层代码，关注业务层开发">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-19T07:34:18.151Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot整合JPA">
+<meta name="twitter:description" content="JPA的使用，减少SQL语言的应用，以对象关系映射操作持久化数据库。减少对SQL的操作 基于JPA标准减少持久层代码，关注业务层开发">
+  
+    <link rel="alternate" href="/atom.xml" title="淡眉如秋水,玉肌伴轻风" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">淡眉如秋水,玉肌伴轻风</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-springboot-data-jpa" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/17/springboot-data-jpa/" class="article-date">
+  <time datetime="2019-03-17T13:11:48.000Z" itemprop="datePublished">2019-03-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>►<a class="article-category-link" href="/categories/spring/springboot/">springboot</a>►<a class="article-category-link" href="/categories/spring/springboot/data/">data</a>►<a class="article-category-link" href="/categories/spring/springboot/data/jpa/">jpa</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SpringBoot整合JPA
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JPA的使用，减少SQL语言的应用，以对象关系映射操作持久化数据库。减少对SQL的操作</p>
+<p>基于JPA标准减少持久层代码，关注业务层开发</p>
+<a id="more"></a>
+<h3 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- JPA 技术 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 测试工具的启动器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- mysql --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- druid 连接池 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="涉及到的注解"><a href="#涉及到的注解" class="headerlink" title="涉及到的注解"></a>涉及到的注解</h3><ul>
+<li>@Entity：用于标注实体</li>
+<li>@Table：用于标注主表针对被注解的类</li>
+<li>@Id</li>
+<li>@GeneratedValue(strategy=GenerationType.IDENTITY)</li>
+<li>@Column</li>
+</ul>
+<h4 id="有几个简单的接口类"><a href="#有几个简单的接口类" class="headerlink" title="有几个简单的接口类"></a>有几个简单的接口类</h4><ul>
+<li>JpaRepository&lt;T, ID&gt;：用于简单操作数据库</li>
+<li>PagingAndSortingRepository</li>
+</ul>
+<p>业务接口类继承上述类，便可简单CRUD。</p>
+<p>定义接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * T: 当前需要映射实体的类 &lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * ID： 当前映射的实体类中的ID类型 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 15081</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">User</span>, <span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Spring-Data-JPA-提供的接口"><a href="#Spring-Data-JPA-提供的接口" class="headerlink" title="Spring Data JPA 提供的接口"></a>Spring Data JPA 提供的接口</h4><ul>
+<li><p>Repository接口</p>
+</li>
+<li><p>CrudRepository接口</p>
+</li>
+<li><p>PagingAndSortingRepository接口</p>
+</li>
+<li><p>JpaRepository接口</p>
+</li>
+<li><p>JPASpecificationExecutor接口</p>
+</li>
+</ul>
+<h5 id="Repository"><a href="#Repository" class="headerlink" title="Repository"></a>Repository</h5><ol>
+<li><p>提供方法名称命名查询的方式</p>
+<p>定义Repository接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查看名称相似</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findByNameLike</span><span class="params">(String name)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询名称相似或者年龄在min和max之间的user</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> min</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> max</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findByNameLikeOrAgeBetween</span><span class="params">(String name, Integer min, Integer max)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFindByNameLike</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	List&lt;User&gt; userList = userRepositoryByName.findByNameLike(<span class="string">"冰噬%"</span>);</span><br><span class="line">	assertEquals(<span class="number">2</span>, userList.size());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试方法名称查询</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFindByNameLikeOrAgeBetween</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	List&lt;User&gt; userList = userRepositoryByName.findByNameLikeOrAgeBetween(<span class="string">"冰噬%"</span>, <span class="number">123</span>, <span class="number">1500</span>);</span><br><span class="line">	<span class="keyword">for</span>(User u: userList) &#123;</span><br><span class="line">		System.out.println(u);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><p>提供了基于@Query注解查询与更新</p>
+<p>接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 查询 &lt;br/&gt;</span><br><span class="line"> * User 是实体类</span><br><span class="line"> * @param name</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">@Query(&quot;from User where name = ?&quot;)</span><br><span class="line">List&lt;User&gt; queryByNameUseHQL(String name);</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * nativeQuery表示是否要自动转义。默认是HQL的，为false。true，表示不需要转义</span><br><span class="line"> * @param name</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">@Query(value=&quot;select id, name, age, address from t_user where name = ?&quot;, nativeQuery=true)</span><br><span class="line">List&lt;User&gt; queryByNameUseSQL(String name);</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试 Query注解</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQueryByNameUseSQL</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	List&lt;User&gt; userList = userRepositoryQueryAnnotation.queryByNameUseSQL(<span class="string">"冰噬物语"</span>);</span><br><span class="line">	assertEquals(<span class="number">2</span>, userList.size());</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试 Query注解&lt;br/&gt;</span></span><br><span class="line"><span class="comment"> * 当<span class="doctag">@Test</span>和<span class="doctag">@Transactional</span>合用时，事务会回滚，故添加<span class="doctag">@Commit</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="meta">@Transactional</span></span><br><span class="line"><span class="comment">// @Rollback(false) 等于 @Commit</span></span><br><span class="line"><span class="meta">@Commit</span> <span class="comment">// 在测试中，</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testUpdateNameById</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	userRepositoryQueryAnnotation.updateNameById(<span class="string">"冰噬物语-陈茜"</span>, <span class="number">4</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="CrudRepository"><a href="#CrudRepository" class="headerlink" title="CrudRepository"></a>CrudRepository</h5><p>主要完成一些增删改查的操作，继承Respository接口</p>
+<h5 id="PagingAndSortingRepository"><a href="#PagingAndSortingRepository" class="headerlink" title="PagingAndSortingRepository"></a>PagingAndSortingRepository</h5><ol>
+<li><p>接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PagingAndSortingRepository&lt;T, ID&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><p>测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 排序+分页</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testPageableAndSort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Sort sort = <span class="keyword">new</span> Sort(<span class="keyword">new</span> Order(Direction.DESC, <span class="string">"id"</span>));</span><br><span class="line">	Pageable pageable = <span class="keyword">new</span> PageRequest(<span class="number">1</span>, <span class="number">2</span>, sort);</span><br><span class="line">	Page&lt;User&gt; page = <span class="keyword">this</span>.userRepositoryPagingAndSorting.findAll(pageable);</span><br><span class="line">	assertEquals(<span class="number">6</span>, page.getTotalElements());</span><br><span class="line">	assertEquals(<span class="number">3</span>, page.getTotalPages());</span><br><span class="line">	<span class="keyword">for</span>(User u: page.getContent()) &#123;</span><br><span class="line">		System.out.println(u);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="JpaRepository"><a href="#JpaRepository" class="headerlink" title="JpaRepository"></a>JpaRepository</h5><p>接口继承了PagingAndSortingRepository接口。</p>
+<p>对父接口的方法的返回类型进行适配。</p>
+<h5 id="JpaSpecificationExecutor"><a href="#JpaSpecificationExecutor" class="headerlink" title="JpaSpecificationExecutor"></a>JpaSpecificationExecutor</h5><p>提供了多条件查询的支持，并且可以在查询中添加分页和排序。</p>
+<p>单独存在，不继承任何接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepositorySpecification</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">User</span>, <span class="title">Integer</span>&gt;, <span class="title">JpaSpecificationExecutor</span>&lt;<span class="title">User</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> UserRepositorySpecification userRepositorySpecification;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 单条件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJpaSpecificationExecutor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 添加匿名类，用于添加封装查询信息</span></span><br><span class="line">	Specification&lt;User&gt; spec = <span class="keyword">new</span> Specification&lt;User&gt;() &#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * Predicate: 封装了单个查询条件&lt;br/&gt;</span></span><br><span class="line"><span class="comment">		 * Root&lt;User&gt; root：查询对象的属性封装&lt;br/&gt;</span></span><br><span class="line"><span class="comment">		 * CriteriaQuery&lt;?&gt; query: 封装了我们要执行的查询中的各个部分信息&lt;br/&gt;</span></span><br><span class="line"><span class="comment">		 * CriteriaBuilder cb: 查询条件的构造器，定义不同的查询条件</span></span><br><span class="line"><span class="comment">		 * </span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;User&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">			<span class="comment">// where name=''</span></span><br><span class="line">			</span><br><span class="line">			<span class="comment">/**</span></span><br><span class="line"><span class="comment">			 * 参数-： 查询的条件属性&lt;br/&gt;</span></span><br><span class="line"><span class="comment">			 * 参数二：条件的值</span></span><br><span class="line"><span class="comment">			 */</span></span><br><span class="line">			Predicate pre = cb.equal(root.get(<span class="string">"name"</span>), <span class="string">"冰噬物语"</span>);</span><br><span class="line">			<span class="keyword">return</span> pre;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	List&lt;User&gt; userList = userRepositorySpecification.findAll(spec);</span><br><span class="line">	<span class="keyword">for</span>(User u: userList) &#123;</span><br><span class="line">		System.out.println(u);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 多条件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMultiJpaSpecificationExecutor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 添加匿名类，用于添加封装查询信息</span></span><br><span class="line">	Specification&lt;User&gt; spec = <span class="keyword">new</span> Specification&lt;User&gt;() &#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * Predicate: 封装了单个查询条件&lt;br/&gt;</span></span><br><span class="line"><span class="comment">		 * Root&lt;User&gt; root：查询对象的属性封装&lt;br/&gt;</span></span><br><span class="line"><span class="comment">		 * CriteriaQuery&lt;?&gt; query: 封装了我们要执行的查询中的各个部分信息&lt;br/&gt;</span></span><br><span class="line"><span class="comment">		 * CriteriaBuilder cb: 查询条件的构造器，定义不同的查询条件</span></span><br><span class="line"><span class="comment">		 * </span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;User&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">			<span class="comment">// where name=? and age=?</span></span><br><span class="line">			List&lt;Predicate&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">			list.add(cb.equal(root.get(<span class="string">"name"</span>), <span class="string">"冰噬物语"</span>));</span><br><span class="line">			list.add(cb.equal(root.get(<span class="string">"age"</span>), <span class="number">1200</span>));</span><br><span class="line">			Predicate[] arr = <span class="keyword">new</span> Predicate[list.size()];</span><br><span class="line">			<span class="keyword">return</span> cb.and(list.toArray(arr));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	List&lt;User&gt; userList = userRepositorySpecification.findAll(spec);</span><br><span class="line">	<span class="keyword">for</span>(User u: userList) &#123;</span><br><span class="line">		System.out.println(u);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 多条件 第二种方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMulti2JpaSpecificationExecutor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 添加匿名类，用于添加封装查询信息</span></span><br><span class="line">	Specification&lt;User&gt; spec = <span class="keyword">new</span> Specification&lt;User&gt;() &#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * Predicate: 封装了单个查询条件&lt;br/&gt;</span></span><br><span class="line"><span class="comment">		 * Root&lt;User&gt; root：查询对象的属性封装&lt;br/&gt;</span></span><br><span class="line"><span class="comment">		 * CriteriaQuery&lt;?&gt; query: 封装了我们要执行的查询中的各个部分信息&lt;br/&gt;</span></span><br><span class="line"><span class="comment">		 * CriteriaBuilder cb: 查询条件的构造器，定义不同的查询条件</span></span><br><span class="line"><span class="comment">		 * </span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;User&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">			<span class="comment">// where name=? and age=?</span></span><br><span class="line">			<span class="keyword">return</span> cb.or(cb.and(cb.equal(root.get(<span class="string">"name"</span>), <span class="string">"冰噬物语"</span>),cb.equal(root.get(<span class="string">"age"</span>), <span class="number">1200</span>)), cb.equal(root.get(<span class="string">"id"</span>), <span class="number">2</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	List&lt;User&gt; userList = userRepositorySpecification.findAll(spec);</span><br><span class="line">	<span class="keyword">for</span>(User u: userList) &#123;</span><br><span class="line">		System.out.println(u);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 多条件第二种+排序</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMulti3JpaSpecificationExecutor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 添加匿名类，用于添加封装查询信息</span></span><br><span class="line">	Specification&lt;User&gt; spec = <span class="keyword">new</span> Specification&lt;User&gt;() &#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * Predicate: 封装了单个查询条件&lt;br/&gt;</span></span><br><span class="line"><span class="comment">		 * Root&lt;User&gt; root：查询对象的属性封装&lt;br/&gt;</span></span><br><span class="line"><span class="comment">		 * CriteriaQuery&lt;?&gt; query: 封装了我们要执行的查询中的各个部分信息&lt;br/&gt;</span></span><br><span class="line"><span class="comment">		 * CriteriaBuilder cb: 查询条件的构造器，定义不同的查询条件</span></span><br><span class="line"><span class="comment">		 * </span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;User&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">			<span class="comment">// where name=? and age=?</span></span><br><span class="line">			<span class="keyword">return</span> cb.or(cb.and(cb.equal(root.get(<span class="string">"name"</span>), <span class="string">"冰噬物语"</span>),cb.equal(root.get(<span class="string">"age"</span>), <span class="number">1200</span>)), cb.equal(root.get(<span class="string">"id"</span>), <span class="number">2</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	Sort sort = <span class="keyword">new</span> Sort(<span class="keyword">new</span> Order(Direction.DESC, <span class="string">"id"</span>));</span><br><span class="line">	List&lt;User&gt; userList = userRepositorySpecification.findAll(spec, sort);</span><br><span class="line">	<span class="keyword">for</span>(User u: userList) &#123;</span><br><span class="line">		System.out.println(u);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="一对多关联关系"><a href="#一对多关联关系" class="headerlink" title="一对多关联关系"></a>一对多关联关系</h3><p>要点：</p>
+<ul>
+<li>@ManyToMany</li>
+<li>@OneToMany</li>
+<li>@ManyToOne</li>
+<li>@JoinTable</li>
+<li>@JoinColumn</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// User.class</span></span><br><span class="line"><span class="meta">@ManyToOne</span>(cascade=CascadeType.PERSIST)</span><br><span class="line"><span class="meta">@JoinColumn</span>(name=<span class="string">"role_id"</span>) <span class="comment">// @JoinColumn表示外键在user这侧，并且关联关系由role_id维持</span></span><br><span class="line"><span class="keyword">private</span> Role role;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Role.class</span></span><br><span class="line"><span class="meta">@OneToMany</span>(mappedBy=<span class="string">"role"</span>) <span class="comment">// 外键被role维护</span></span><br><span class="line"><span class="keyword">private</span> Set&lt;User&gt; users = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSave</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	User user = <span class="keyword">new</span> User();</span><br><span class="line">	user.setAddress(<span class="string">"邢台"</span>);</span><br><span class="line">	user.setAge(<span class="number">23</span>);</span><br><span class="line">	user.setName(<span class="string">"龙"</span>);</span><br><span class="line">	Role role = <span class="keyword">new</span> Role();</span><br><span class="line">	role.setName(<span class="string">"管理员"</span>);</span><br><span class="line">	role.getUsers().add(user);</span><br><span class="line">	user.setRole(role);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">this</span>.userRepository.save(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="多对多关联"><a href="#多对多关联" class="headerlink" title="多对多关联"></a>多对多关联</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Menu.class</span></span><br><span class="line">	<span class="meta">@ManyToMany</span>(mappedBy=<span class="string">"menus"</span>)</span><br><span class="line">	<span class="keyword">private</span> Set&lt;Role&gt; roles = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">//Role.class</span></span><br><span class="line">	<span class="comment">// @JoinTable: 映射中间表</span></span><br><span class="line">	<span class="comment">// @joinColumns: 当前表中的主键所关联的中间表中的外键字段</span></span><br><span class="line">	<span class="meta">@ManyToMany</span>(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)</span><br><span class="line">	<span class="meta">@JoinTable</span>(name=<span class="string">"t_role_menu"</span>, joinColumns=<span class="meta">@JoinColumn</span>(name=<span class="string">"role_id"</span>), inverseJoinColumns=<span class="meta">@JoinColumn</span>(name=<span class="string">"menu_id"</span>))</span><br><span class="line">	<span class="keyword">private</span> Set&lt;Menu&gt; menus = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSave</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Role role = <span class="keyword">new</span> Role();</span><br><span class="line">	role.setName(<span class="string">"项目主任"</span>);</span><br><span class="line">	</span><br><span class="line">	Menu m1 = <span class="keyword">new</span> Menu();</span><br><span class="line">	m1.setName(<span class="string">"信息操作系统"</span>);</span><br><span class="line">	m1.setFatherId(<span class="number">0</span>); <span class="comment">// 根节点，没有url</span></span><br><span class="line">	</span><br><span class="line">	Menu m2 = <span class="keyword">new</span> Menu();</span><br><span class="line">	m2.setName(<span class="string">"气味管理"</span>);</span><br><span class="line">	m2.setFatherId(<span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	role.getMenus().add(m1);</span><br><span class="line">	role.getMenus().add(m2);</span><br><span class="line">	</span><br><span class="line">	m1.getRoles().add(role);</span><br><span class="line">	m2.getRoles().add(role);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">this</span>.roleRepository.save(role);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFind</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Role role = <span class="keyword">this</span>.roleRepository.findOne(<span class="number">3</span>);</span><br><span class="line">	Set&lt;Menu&gt; menus = role.getMenus();</span><br><span class="line">	<span class="keyword">for</span>(Menu m: menus) &#123;</span><br><span class="line">		System.out.println(m);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/17/springboot-data-jpa/" data-id="cjtfvda3900197svsagwxdga0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jpa/">jpa</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/18/springboot-redis/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          SpringBoot整合Redis
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/17/springboot-ehcache/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">springboot整合ehcache</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/">springboot</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/cache/">cache</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/cache/ehcache/">ehcache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/cache/redis/">redis</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/data/">data</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/data/jpa/">jpa</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/exception/">exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/hibernate/">hibernate</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/loader/">loader</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/mybatis/">mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/scheduler/">scheduler</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/test/">test</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/web/">web</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/List/">List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cache/">cache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ehcache/">ehcache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hibernate/">hibernate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jpa/">jpa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/loader/">loader</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pool/">pool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scheduler/">scheduler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/ehcache/" style="font-size: 10px;">ehcache</a> <a href="/tags/exception/" style="font-size: 10px;">exception</a> <a href="/tags/freemarker/" style="font-size: 10px;">freemarker</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jpa/" style="font-size: 10px;">jpa</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pool/" style="font-size: 10px;">pool</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/scheduler/" style="font-size: 10px;">scheduler</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/springboot/" style="font-size: 20px;">springboot</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/thymeleaf/" style="font-size: 10px;">thymeleaf</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/19/os/">Operation System</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/mysql/">MySQL 数据类型</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/springboot-web/">springboot支持的web开发</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/springboot-starter/">SpringBoot 起始章</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/springboot-scheduler/">spring整合定时任务框架</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 bswy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>springboot支持的web开发 | 淡眉如秋水,玉肌伴轻风</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Web开发Web开发的框架有:  jsp thymeleaf freemarker">
+<meta name="keywords" content="thymeleaf,spring,springboot,web,jsp,freemarker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot支持的web开发">
+<meta property="og:url" content="http://yoursite.com/2019/03/19/springboot-web/index.html">
+<meta property="og:site_name" content="淡眉如秋水,玉肌伴轻风">
+<meta property="og:description" content="Web开发Web开发的框架有:  jsp thymeleaf freemarker">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-19T14:32:16.611Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="springboot支持的web开发">
+<meta name="twitter:description" content="Web开发Web开发的框架有:  jsp thymeleaf freemarker">
+  
+    <link rel="alternate" href="/atom.xml" title="淡眉如秋水,玉肌伴轻风" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">淡眉如秋水,玉肌伴轻风</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-springboot-web" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/19/springboot-web/" class="article-date">
+  <time datetime="2019-03-19T08:09:00.000Z" itemprop="datePublished">2019-03-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>►<a class="article-category-link" href="/categories/spring/springboot/">springboot</a>►<a class="article-category-link" href="/categories/spring/springboot/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      springboot支持的web开发
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Web开发"><a href="#Web开发" class="headerlink" title="Web开发"></a>Web开发</h2><p>Web开发的框架有:</p>
+<ul>
+<li>jsp</li>
+<li>thymeleaf</li>
+<li>freemarker</li>
+</ul>
+<a id="more"></a>
+<h3 id="pom引入jar包"><a href="#pom引入jar包" class="headerlink" title="pom引入jar包"></a>pom引入jar包</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- jstl --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- JSP 引擎 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat.embed<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat-embed-jasper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h3><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span><br><span class="line">...</span><br><span class="line">&lt;!-- 迭代 --&gt;</span><br><span class="line">&lt;c:forEach items=<span class="string">"$&#123;users &#125;"</span> <span class="keyword">var</span>=<span class="string">"user"</span>&gt;</span><br><span class="line">	&lt;tr&gt;</span><br><span class="line">		&lt;td&gt;$&#123;user.userid &#125;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;$&#123;user.username&#125;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;$&#123;user.userage&#125;&lt;/td&gt;</span><br><span class="line">	&lt;/tr&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>设置springboot全局配置文件，application.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spring.mvc.view.prefix=/WEB-INF/jsp/</span><br><span class="line">spring.mvc.view.suffix=.jsp</span><br></pre></td></tr></table></figure>
+<h3 id="Freemarker"><a href="#Freemarker" class="headerlink" title="Freemarker"></a>Freemarker</h3><p>SpringBoot默认的模版视图存放在src/main/resources的templates目录下。  </p>
+<p><strong>注意</strong>：springBoot 要求模板形式的视图层技术的文件必须要放到 src/main/resources 目录下必<br>须要一个名称为 templates </p>
+<p>pom.xml文件内容</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- freemarker的启动坐标 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Thymeleaf"><a href="#Thymeleaf" class="headerlink" title="Thymeleaf"></a>Thymeleaf</h3><p>pom.xml中修改thymeleaf的版本</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">thymeleaf.version</span>&gt;</span>3.0.2.RELEASE<span class="tag">&lt;/<span class="name">thymeleaf.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span>2.0.4<span class="tag">&lt;/<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>为防止thymeleaf按照严谨的语法编写。可以设置thymeleaf版本：</p>
+<ul>
+<li>Thymeleaf.jar:更新为 3.0 以上的版本</li>
+<li>thymeleaf-layout-dialect.jar： 更新为 2.0 以上的版本 </li>
+</ul>
+<p>存放视图的目录：</p>
+<p>目录位置： src/main/resources/templates<br>templates： 该目录是安全的。 意味着该目录下的内容是不允许外界直接访问的 </p>
+<p>Thymelaef 是通过他特定语法对 html 的标记做渲染。 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"hello"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;msg&#125; "</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;#dates.format(key)&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Thymeleaf语法详解"><a href="#Thymeleaf语法详解" class="headerlink" title="Thymeleaf语法详解"></a>Thymeleaf语法详解</h3><h4 id="th-text-查看消息"><a href="#th-text-查看消息" class="headerlink" title="th:text 查看消息"></a>th:text 查看消息</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span th:text="$&#123;message&#125;"&gt;&lt;/span&gt; //</span><br></pre></td></tr></table></figure>
+<p>th:value</p>
+<p>将值放入input的标签的value属性中</p>
+<h4 id="th-href-超链接"><a href="#th-href-超链接" class="headerlink" title="th:href 超链接"></a>th:href 超链接</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a th:href="@&#123;$&#123;url&#125;&#125;"&gt;查看所有用户&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a th:href="@&#123;/home&#125;"&gt;home&lt;/a&gt; // 查看当前项目下的/home请求</span><br></pre></td></tr></table></figure>
+<h4 id="Thymeleaf-内置对象"><a href="#Thymeleaf-内置对象" class="headerlink" title="Thymeleaf 内置对象"></a>Thymeleaf 内置对象</h4><p>注意语法：<br>1， 调用内置对象一定要用#<br>2， 大部分的内置对象都以 s 结尾 strings、 numbers、 dates </p>
+<h5 id="dates类"><a href="#dates类" class="headerlink" title="dates类"></a>dates类</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span th:text="$&#123;#dates.format(key)&#125;"&gt;&lt;/span&gt; // 查看后台传入的key变量</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><figure class="highlight plain"><figcaption><span>| 格式化日期， 默认的以浏览器默认语言为格式化标准 |</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">| ```$&#123;#dates.format(key,&apos;yyy/MM/dd&apos;)&#125;``` | 按照自定义的格式做日期转换                      |</span><br><span class="line">| ```$&#123;#dates.year(key)&#125;```               | 取年                                            |</span><br><span class="line">| ```$&#123;#dates.month(key)&#125;```              | 取月                                            |</span><br><span class="line">| ```$&#123;#dates.day(key)&#125;```                | 取日                                            |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##### strings内置对象</span><br><span class="line"></span><br><span class="line">| 表达式                                 | 含义                                                         |</span><br><span class="line">| -------------------------------------- | :----------------------------------------------------------- |</span><br><span class="line">| ```$&#123;#strings.isEmpty(key)&#125;```         | 判断字符串是否为空， 如果为空返回 true， 否则返回 false      |</span><br><span class="line">| ```$&#123;#strings.contains(msg,&apos;T&apos;)&#125;```    | 判断字符串是否包含指定的子串， 如果包含返回 true， 否则返回 false |</span><br><span class="line">| ```$&#123;#strings.startsWith(msg,&apos;a&apos;)&#125;```  | 判断当前字符串是否以子串开头， 如果是返回 true， 否则返回 false |</span><br><span class="line">| ```$&#123;#strings.endsWith(msg,&apos;a&apos;)&#125;```    | 判断当前字符串是否以子串结尾， 如果是返回 true， 否则返回 false |</span><br><span class="line">| ```$&#123;#strings.length(msg)&#125;```          | 返回字符串的长度                                             |</span><br><span class="line">| ```$&#123;#strings.indexOf(msg,&apos;h&apos;)&#125;```     | 查找子串的位置， 并返回该子串的下标， 如果没找到则返回-1     |</span><br><span class="line">| ```$&#123;#strings.substring(msg,13,15)&#125;``` | 截取子串， 用户与 jdk String 类下 SubString 方法相同         |</span><br><span class="line">| ```$&#123;#strings.toUpperCase(msg)&#125;```     | 字符串转大小写。                                             |</span><br><span class="line"></span><br><span class="line">##### 条件判断</span><br><span class="line"></span><br><span class="line">**th:if**</span><br><span class="line"></span><br><span class="line">```jsp</span><br><span class="line">&lt;span th:if=&quot;$&#123;sex&#125; == &apos;男&apos;&quot;&gt;</span><br><span class="line">	性别： 男</span><br><span class="line">&lt;/span&gt;</span><br><span class="line">&lt;span th:if=&quot;$&#123;sex&#125; == &apos;女&apos;&quot;&gt;</span><br><span class="line">	性别： 女</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure></td>
+</tr>
+</tbody>
+</table>
+<p><strong>th:switch</strong> </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div th:<span class="keyword">switch</span>=<span class="string">"$&#123;id&#125;"</span>&gt;</span><br><span class="line">    &lt;span th:case="1"&gt;ID 为 1&lt;/span&gt;</span><br><span class="line">    &lt;span th:case="2"&gt;ID 为 2&lt;/span&gt;</span><br><span class="line">  	&lt;span th:case="3"&gt;ID 为 3&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h5><p><strong>th:each</strong> </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=<span class="string">"1"</span>&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;th&gt;ID&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;Name&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;Age&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr th:each=<span class="string">"u : $&#123;list&#125;"</span>&gt;</span><br><span class="line">        &lt;td th:text="$&#123;u.userid&#125;"&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td th:text="$&#123;u.username&#125;"&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td th:text="$&#123;u.userage&#125;"&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>th:each</strong>状态变量</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=<span class="string">"1"</span>&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;th&gt;ID&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;Name&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;Age&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;Index&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;Count&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;Size&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;Even&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;Odd&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;First&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;lase&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr th:each=<span class="string">"u,var : $&#123;list&#125;"</span>&gt;</span><br><span class="line">        &lt;td th:text="$&#123;u.userid&#125;"&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td th:text="$&#123;u.username&#125;"&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td th:text="$&#123;u.userage&#125;"&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td th:text="$&#123;var.index&#125;"&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td th:text="$&#123;var.count&#125;"&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td th:text="$&#123;var.size&#125;"&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td th:text="$&#123;var.even&#125;"&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td th:text="$&#123;var.odd&#125;"&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td th:text="$&#123;var.first&#125;"&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td th:text="$&#123;var.last&#125;"&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<p>状态变量属性<br>1,index:当前迭代器的索引 从 0 开始<br>2,count:当前迭代对象的计数 从 1 开始<br>3,size:被迭代对象的长度<br>4,even/odd:布尔值， 当前循环是否是偶数/奇数 从 0 开始<br>5,first:布尔值， 当前循环的是否是第一条， 如果是返回 true 否则返回 false<br>6,last:布尔值， 当前循环的是否是最后一条， 如果是则返回 true 否则返回 false </p>
+<p>th:each迭代map</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=<span class="string">"1"</span>&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;th&gt;ID&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;Name&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;Age&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr th:each=<span class="string">"maps : $&#123;map&#125;"</span>&gt;</span><br><span class="line">    	&lt;td th:text="$&#123;maps&#125;"&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">&lt;table border=<span class="string">"1"</span>&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;th&gt;ID&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;Name&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;Age&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr th:each=<span class="string">"maps : $&#123;map&#125;"</span>&gt;</span><br><span class="line">        &lt;td th:each="entry:$&#123;maps&#125;" th:text="$&#123;entry.value.userid&#125;" &gt;&lt;/td&gt;</span><br><span class="line">        &lt;td th:each="entry:$&#123;maps&#125;" th:text="$&#123;entry.value.username&#125;"&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td th:each="entry:$&#123;maps&#125;" th:text="$&#123;entry.value.userage&#125;"&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="域对象操作"><a href="#域对象操作" class="headerlink" title="域对象操作"></a>域对象操作</h5><p><strong>HttpServeltRequest对象</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.setAttribute(<span class="string">"req"</span>, <span class="string">"HttpServletRequest"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Request:&lt;span th:text="$&#123;#httpServletRequest.getAttribute('req')&#125;"&gt;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>HttpSession</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.getSession().setAttribute(<span class="string">"sess"</span>, <span class="string">"HttpSession"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Session:&lt;span th:text="$&#123;session.sess&#125;"&gt;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>ServletContext</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.getSession().getServletContext().setAttribute(<span class="string">"app"</span>, <span class="string">"Application"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Application:&lt;span th:text="$&#123;application.app&#125;"&gt;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="URL表达式"><a href="#URL表达式" class="headerlink" title="URL表达式"></a>URL表达式</h5><p>绝对路径</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a th:href="@&#123;http://www.baidu.com&#125;"&gt;绝对路径&lt;/a&gt;&lt;br/&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>相对路径</strong> </p>
+<ul>
+<li><p>相对于当前项目的根<br>相对于项目的上下文的相对路径</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a th:href="@&#123;/show&#125;"&gt;相对路径&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相对于服务器路径的根 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a th:href="@&#123;~/project2/resourcename&#125;"&gt;相对于服务器的根&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 url 中实现参数传递 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a th:href="@&#123;/show(id=1,name=zhagnsan)&#125;"&gt;相对路径-传参&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 url 中通过 restful 风格进行参数传递 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a th:href="@&#123;/path/&#123;id&#125;/show(id=1,name=zhagnsan)&#125;"&gt; 相对路径-传参-restful&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a th:href="@&#123;/spring/&#123;id&#125;/show(id=$&#123;id&#125;)&#125;"&gt;abc&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/19/springboot-web/" data-id="cjtfvhjus000094vsleaighmq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsp/">jsp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/19/mysql/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MySQL 数据类型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/19/springboot-starter/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SpringBoot 起始章</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/">springboot</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/cache/">cache</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/cache/ehcache/">ehcache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/cache/redis/">redis</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/data/">data</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/data/jpa/">jpa</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/exception/">exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/hibernate/">hibernate</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/loader/">loader</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/mybatis/">mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/scheduler/">scheduler</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/test/">test</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/springboot/web/">web</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/List/">List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cache/">cache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ehcache/">ehcache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exception/">exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hibernate/">hibernate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jpa/">jpa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/loader/">loader</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pool/">pool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scheduler/">scheduler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/">springmvc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/ehcache/" style="font-size: 10px;">ehcache</a> <a href="/tags/exception/" style="font-size: 10px;">exception</a> <a href="/tags/freemarker/" style="font-size: 10px;">freemarker</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jpa/" style="font-size: 10px;">jpa</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/pool/" style="font-size: 10px;">pool</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/scheduler/" style="font-size: 10px;">scheduler</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/springboot/" style="font-size: 20px;">springboot</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/thymeleaf/" style="font-size: 10px;">thymeleaf</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/19/os/">Operation System</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/mysql/">MySQL 数据类型</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/springboot-web/">springboot支持的web开发</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/springboot-starter/">SpringBoot 起始章</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/19/springboot-scheduler/">spring整合定时任务框架</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 bswy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
